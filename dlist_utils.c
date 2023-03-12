@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dlist_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokuyama <tokuyama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/11 20:01:20 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/03/12 23:20:34 by tokuyama         ###   ########.fr       */
+/*   Created: 2023/03/12 22:03:46 by tokuyama          #+#    #+#             */
+/*   Updated: 2023/03/13 01:14:23 by tokuyama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
-int main(int ac, char **av)
+dlist   *new_dlist(void)
 {
-	// 引数が数値でない or intの範囲を超えてたらErrorと表示
-	if (ac <= 2)
-	{
-		ft_printf("Error¥n");
-		while ()
+	dlist	*new;
 
-		return (0);
-	}
-	else if (ac <= 3)
-	{
-		return (0);
-	}
-	else if (ac <= 6)
-	{
-		return (0);
-	}
-	else
-	{
-		return (0);
-	}
-	return (1);
+	new = (dlist *)malloc(sizeof(dlist));
+	return (dlist);
+}
+
+void    *dlist_add(dlist **lst, int val)
+{
+	dlist	*new;
+	dlist	*tail;
+
+	new = new_dlist();
+	tail = *lst;
+	tail->next = new;
+	new->data = val;
+	new->prev = tail;
+	new->next = NULL;
+	*lst = new;
 }
