@@ -6,7 +6,7 @@
 /*   By: tokuyama <tokuyama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 20:01:20 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/03/12 23:20:34 by tokuyama         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:31:26 by tokuyama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int main(int ac, char **av)
 	if (ac <= 2)
 	{
 		ft_printf("Error¥n");
-		while ()
-
 		return (0);
 	}
 	else if (ac <= 3)

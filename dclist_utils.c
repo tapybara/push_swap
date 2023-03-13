@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist_utils.c                                      :+:      :+:    :+:   */
+/*   dclist_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tokuyama <tokuyama@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 22:03:46 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/03/13 01:14:23 by tokuyama         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:56:17 by tokuyama         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-dlist   *new_dlist(void)
+dclist   *dclist_new(void *data)
 {
-	dlist	*new;
+	dclist	*new;
 
-	new = (dlist *)malloc(sizeof(dlist));
-	return (dlist);
+	new = (dclist *)malloc(sizeof(dclist));
+	if (!new)
+		return (NULL);
+	return (new);
 }
 
-void    *dlist_add(dlist **lst, int val)
+void    *dclist_add_front(dclist **lst, int val)
 {
-	dlist	*new;
-	dlist	*tail;
+	dclist	*new;
+	dclist	*tail;
 
-	new = new_dlist();
+	new = new_dclist();
 	tail = *lst;
 	tail->next = new;
 	new->data = val;
