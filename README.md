@@ -2,16 +2,17 @@
 
 ## ▼ 実装手順
 ### **1. 前処理**
-1.	構造体（双方向循環リスト）を定義
+1.	構造体（双方向循環リスト）を定義  
+	※ 番兵ノード（Sentinel node）を設定。
 1.	構造体を操作する基本関数を実装
-	| Func name | Description | Remark |
-	|:------|:--------:|-------:|
-	| dlist_new |  |  |
-	| dlist_add_front |  |  |
-	| dlist_add_back |  |  |
-	| dlist_delete |  |  |
-	| dlist_clear |  |  |
-	| dlist_listsize | リストを作成     |  |
+	| Func name | Description | decline |  | Remark |
+	|:------|:--------|:-------|:------|:------
+	| dlist_new |  |  |  |
+	| dlist_add_front |  |  |  |
+	| dlist_add_back |  |  |  |
+	| dlist_delete |  |  |  |
+	| dlist_clear |  |  |  |
+	| dlist_listsize |  |  |  |
 1.	標準入力の数が3以上かどうかをチェック -> If not Error
 1.	標準入力をそれぞれint型に変換してstack_aを生成 -> 格納。
 1.	(stack_bも予め確保しておく？)

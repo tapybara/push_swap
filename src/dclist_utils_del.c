@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   dclist_utils_del.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tokuyama <tokuyama@student.42.fr>          +#+  +:+       +#+        */
+/*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/11 17:59:40 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/03/13 13:05:00 by tokuyama         ###   ########.fr       */
+/*   Created: 2023/03/13 18:28:52 by okuyamataka       #+#    #+#             */
+/*   Updated: 2023/04/18 23:46:01 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP.H
-# define PUSH_SWAP.H
+#include "push_swap.h"
 
-typedef struct  dclist{
-    int     data;
-    struct dclist    *prev;
-    struct dclist    *next;
-} dclist;
+int	lstsize(dclist *lsthead)
+{
+	int	size;
 
-#endif
+	size = 0;
+	while (lsthead->next != NULL)
+	{
+		lsthead = lsthead->next;
+		size++;
+	}
+	return (size);
+}
