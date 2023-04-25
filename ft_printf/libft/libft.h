@@ -73,4 +73,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 char	*ft_uitoa(unsigned int n);
 char	*ft_ltoa(long n);
+long	ft_atol(const char *str);
+
 #endif

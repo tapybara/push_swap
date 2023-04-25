@@ -12,37 +12,46 @@
 
 #include "push_swap.h"
 
-dclist   *dclist_new(void)
+dclist   *dclist_new(int val)
 {
 	dclist	*new;
 
 	new = (dclist *)malloc(sizeof(dclist));
 	if (!new)
 		return (NULL);
+	new->data = val;
+	new->prev = NULL;
+	new->next = NULL;
 	return (new);
 }
 
-void    *dclist_add_front(dclist **lst, dlist *node)
+void    *dclist_add_back(dclist *lst, int val)
 {
-	if (!lst || !node)
-		return (NULL);
-	node->next = *lst;
-	node->prev = *lst->prev;
-	*lst->prev->next = node;
-	*lst->prev = node;
-	*lst = node;
+	dclist	*new;
+	dclist	*tail;
+
+	new = dclist_new(val);
+	if (lst == NULL)
+		lst = new;
+	else
+	{
+		tail = lst->prev;
+		tail->next = new;
+		lst->prev = new;
+		new->prev = tail;
+		new->next = lst;
+	}
 }
 
-void    *dclist_add_back(dclist **lsthead, int val)
+int	lstsize(dclist *lst)
 {
-	// dclist	*new;
-	// dclist	*tail;
+	int	size;
 
-	// new = new_dclist();
-	// tail = *lsthead;
-	// tail->next = new;
-	// new->data = val;
-	// new->prev = tail;
-	// new->next = NULL;
-	// *lsthead = new;
+	size = 0;
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
 }
