@@ -12,7 +12,18 @@
 
 #include "push_swap.h"
 
-void	free_stack(dclist *stack);
+void	free_stack(dclist *head)
 {
-	
+	dclist	*node;
+	dclist	*tmp;
+
+	node = head->next;
+	while (node != head)
+	{
+		tmp = node->next;
+		free(node);
+		node = tmp;
+	}
+	free(node);
+	head = NULL;
 }

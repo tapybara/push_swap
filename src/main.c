@@ -6,38 +6,33 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 20:01:20 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/04/25 23:47:32 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/04/28 00:18:23 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "ft_printf.h"
 
-
-void	is_sorted(dclist *stack_a)
+void	is_sorted(dclist *head)
 {
-	dclist	*tail;
+	dclist *node;
 
-	tail = stack_a->prev;
-	while (stack_a != tail)
+	node = head;
+	while (node->next != head)
 	{
-		if (stack_a->data > stack_a->next->data)
-		{
-			ft_printf("ALREADY SORTED¥n");
-			free_stack(stack_a);
-			exit (EXIT_FAILURE);
-		}
-		stack_a = stack_a->next;
+		if (node->data > node->next->data)
+			return ;
+		node = node->next;
 	}
+	ft_printf("ALREADY SORTED¥n");
+	free_stack(head);
+	exit (EXIT_FAILURE);
 }
 
-dclist	*input_to_stack(int ac, char **av)
+dclist	*input_to_stack(dclist *head, int ac, char **av)
 {
-	dclist	*stack_a;
 	long	nbr;
 	int		i;
 
-	stack_a = NULL;
 	i = 1;
 	while (i < ac)
 	{
@@ -45,13 +40,12 @@ dclist	*input_to_stack(int ac, char **av)
 		if (nbr < INT_MIN || INT_MAX < nbr)
 		{
 			ft_printf("INPUT ERROR OF OVER INT_MAX or INT_MIN");
-			if (stack_a != NULL)
-				free_stack(stack_a);
+			free_stack(head);
 			exit (EXIT_FAILURE);
 		}
-		dclist_add_back(stack_a, (int)nbr);
+		dclist_add_back(head, (int)nbr);
 	}
-	return (stack_a);
+	return (head);
 }
 
 void	is_invalid_input(int ac, char **av)
@@ -95,10 +89,11 @@ int main(int ac, char **av)
 	// 無効な入力判定
 	is_invalid_input(ac, av);
 	// 入力データを双方向循環リストに格納
-	stack_a = input_to_stack(ac, av);
-	stack_b = NULL;
+	stack_a = dclist_new();
+	stack_b = dclist_new();
+	input_to_stack(stack_a, ac, av);
 	// ソート済み判定
-	is_sorted(stack_a)
+	is_sorted(stack_a);
 	// 座標圧縮
 	// 
 	// ソート処理
