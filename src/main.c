@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 20:01:20 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/04/28 20:39:54 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/04/28 22:49:48 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	is_sorted(dclist *head)
 			return ;
 		node = node->next;
 	}
-	ft_printf("ALREADY SORTED¥n");
+	ft_printf("ERROR: ALREADY SORTED\n");
 	free_stack(head);
 	exit (EXIT_FAILURE);
 }
@@ -39,7 +39,7 @@ dclist	*input_to_stack(dclist *head, int ac, char **av)
 		nbr = ft_atol(av[i++]);
 		if (nbr < INT_MIN || INT_MAX < nbr)
 		{
-			ft_printf("INPUT ERROR OF OVER INT_MAX or INT_MIN");
+			ft_printf("ERROR: CONTAIN OVER INT_MAX or INT_MIN\n");
 			free_stack(head);
 			exit (EXIT_FAILURE);
 		}
@@ -53,25 +53,28 @@ void	is_invalid_input(int ac, char **av)
 	int	i;
 	int	j;
 
-	i = 1;
-	while(i < ac)
+	i = 0;
+	while(++i < ac)
 	{
 		j = 0;
 		while(av[i][j])
 		{
-			if (!ft_isdigit(av[i][j]) || !(av[i][j] == '-'))
+			// ft_printf("%c\n",av[i][j]);
+			if (ft_isdigit(av[i][j]) || (av[i][j] == '-'))
+				j++;
+			else
 			{
-				ft_printf("INVALID INPUT ERROR - NOT DIGIT¥n");
+				ft_printf("ERROR: INVALID INPUT NOT DIGIT\n");
 				exit(EXIT_FAILURE);
 			}
-			j++;
 		}
 		j = i;
 		while(++j < ac)
 		{
+			// ft_printf("[%s] vs [%s]\n",av[i], av[j]);
 			if(!ft_strncmp(av[i], av[j], 1))
 			{
-				ft_printf("INVALID INPUT ERROR - DUPLICATE INPUT¥n");
+				ft_printf("ERROR: INVALID INPUT DUPLICATE INPUT\n");
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -93,19 +96,20 @@ int main(int ac, char **av)
 	stack_b = dclist_new();
 	input_to_stack(stack_a, ac, av);
 	// ソート済み判定
+	// ft_printf("OK\n");
 	is_sorted(stack_a);
 	// 座標圧縮
 	// 
 	// ソート処理
 	if (ac == 3)
-		ft_printf("SIZE = 2");
+		ft_printf("SIZE = 2\n");
 		// do_sa(stack_a);
 	else if (ac == 4)
-		ft_printf("SIZE = 3");
+		ft_printf("SIZE = 3\n");
 	else if (ac <= 7)
-		ft_printf("SIZE = 4-6");
+		ft_printf("SIZE = 4-6\n");
 	else
-		ft_printf("SIZE = OVER SIX");
+		ft_printf("SIZE = OVER SIX\n");
 	// スタックメモリ解放
 	free_stack(stack_a);
 	free_stack(stack_b);

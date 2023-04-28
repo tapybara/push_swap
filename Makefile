@@ -6,7 +6,7 @@
 #    By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 19:43:12 by okuyamataka       #+#    #+#              #
-#    Updated: 2023/04/28 21:32:23 by okuyamataka      ###   ########.fr        #
+#    Updated: 2023/04/28 22:07:38 by okuyamataka      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ fclean:	clean
 		rm -f $(TARGET)
 
 re:		fclean
-		all
+		$(MAKE) all
 
 tester:
 	make re
