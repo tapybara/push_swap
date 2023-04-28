@@ -1,14 +1,26 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/28 19:43:12 by okuyamataka       #+#    #+#              #
+#    Updated: 2023/04/28 21:32:23 by okuyamataka      ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 TARGET	= push_swap
 
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 
-INCLUDE_DIR	= ./includes/
-INCLUDE_FILE= ./includes/push_swap.h
-PRINTF_DIR	= ./ft_printf/
-PRINTF_INCLUDE_DIR	= ../ft_printf/includes/
-PRINTF_LIB	= ./ft_printf/libftprintf.a
+HEADER_DIR			= -I./includes/
+PRINTF_HEADER_DIR	= -I../ft_printf/includes/
+LIBFT_DIR			= -I./ft_printf/libft/
+PRINTF_DIR			= ./ft_printf/
+PRINTF_LIB			= ./ft_printf/libftprintf.a
 
 SRCS_DIR	= ./src/
 SRCS		= $(addprefix ${SRCS_DIR}, ${FILE_NAME})
@@ -20,12 +32,14 @@ OBJS = $(SRCS:%.c=%.o)
 
 all:	$(TARGET)
 
-$(TARGET):	$(OBJS)
-	$(CC) $(OBJS) -o $@
+$(TARGET):	$(OBJS) $(PRINTF_LIB)
+	$(CC) $^ -o $(TARGET)
 
-$(OBJS): $(SRCS) $(PRINTF_LIB)
+$(OBJS): %.o: %.c
+	$(CC) $(CFLAGS) $(HEADER_DIR) $(PRINTF_HEADER_DIR) $(LIBFT_DIR) -o $@ -c $<
+
+$(PRINTF_LIB):
 	$(MAKE) -C $(PRINTF_DIR)
-	$(CC) $(CFLAGS) -I${INCLUDE_DIR} -I$(PRINTF_INCLUDE_DIR) $(PRINTF_LIB) -c $(SRCS)
 
 clean:
 		$(MAKE) clean -C $(PRINTF_DIR)

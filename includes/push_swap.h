@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 17:59:40 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/04/28 00:20:45 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/04/28 21:49:34 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 # include <stdlib.h>    
 # include <sysexits.h>  // For EXIT RETURN VALUE
 # include "ft_printf.h"
+# include "libft.h"
 
 typedef struct  dclist{
     int     data;
+    int     id;
     struct dclist    *prev;
     struct dclist    *next;
 } dclist;
 
 dclist   *dclist_new(void);
 void    dclist_add_back(dclist *head, int val);
-void	free_stack(dclist *stack);
+void	free_stack(dclist *head);
 #endif

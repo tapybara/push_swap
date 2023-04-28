@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 20:01:20 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/04/28 00:18:23 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/04/28 20:39:54 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	is_invalid_input(int ac, char **av)
 		j = i;
 		while(++j < ac)
 		{
-			if(!ft_strncmp(av[i], av[j]))
+			if(!ft_strncmp(av[i], av[j], 1))
 			{
 				ft_printf("INVALID INPUT ERROR - DUPLICATE INPUT¥n");
 				exit(EXIT_FAILURE);
