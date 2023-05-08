@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 01:44:28 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/02/11 13:27:38 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/04/28 23:28:48 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*ft_uitoa(unsigned int n);
 char	*ft_ltoa(long n);
 long	ft_atol(const char *str);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif
