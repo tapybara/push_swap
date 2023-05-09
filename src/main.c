@@ -6,7 +6,7 @@
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 20:01:20 by tokuyama          #+#    #+#             */
-/*   Updated: 2023/04/28 22:49:48 by okuyamataka      ###   ########.fr       */
+/*   Updated: 2023/05/09 22:25:02 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ int main(int ac, char **av)
 	stack_b = dclist_new();
 	input_to_stack(stack_a, ac, av);
 	// ソート済み判定
-	// ft_printf("OK\n");
 	is_sorted(stack_a);
 	// 座標圧縮
 	cordinate_compression(ac, stack_a);
