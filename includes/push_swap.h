@@ -29,4 +29,7 @@ typedef struct  dclist{
 dclist   *dclist_new(void);
 void    dclist_add_back(dclist *head, int val);
 void	free_stack(dclist *head);
+void	cordinate_compression(int ac, dclist *head);
+void	swap_int(int *a, int *b);
+void    quick_sort(int *arr, int low, int high);
 #endif

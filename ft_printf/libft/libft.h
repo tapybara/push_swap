@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <stdlib.h>	//For size_t
+# include <stdint.h>	//For SIZE_MAX
 # include <limits.h>	//For LONG_MAX & LONG_MIN
 # include <unistd.h>	//For write function
 

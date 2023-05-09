@@ -72,7 +72,7 @@ void	is_invalid_input(int ac, char **av)
 		while(++j < ac)
 		{
 			// ft_printf("[%s] vs [%s]\n",av[i], av[j]);
-			if(!ft_strncmp(av[i], av[j], 1))
+			if(!ft_strcmp(av[i], av[j]))
 			{
 				ft_printf("ERROR: INVALID INPUT DUPLICATE INPUT\n");
 				exit(EXIT_FAILURE);
@@ -99,7 +99,7 @@ int main(int ac, char **av)
 	// ft_printf("OK\n");
 	is_sorted(stack_a);
 	// 座標圧縮
-	// 
+	cordinate_compression(ac, stack_a);
 	// ソート処理
 	if (ac == 3)
 		ft_printf("SIZE = 2\n");

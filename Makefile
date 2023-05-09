@@ -17,7 +17,7 @@ CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 
 HEADER_DIR			= -I./includes/
-PRINTF_HEADER_DIR	= -I../ft_printf/includes/
+PRINTF_HEADER_DIR	= -I./ft_printf/includes/
 LIBFT_DIR			= -I./ft_printf/libft/
 PRINTF_DIR			= ./ft_printf/
 PRINTF_LIB			= ./ft_printf/libftprintf.a
@@ -27,7 +27,10 @@ SRCS		= $(addprefix ${SRCS_DIR}, ${FILE_NAME})
 FILE_NAME	= \
 			main.c \
 			dclist_utils_add.c\
-			dclist_utils_del.c
+			dclist_utils_del.c\
+			cordinate_compression.c\
+			push_swap_utils.c
+
 OBJS = $(SRCS:%.c=%.o)
 
 all:	$(TARGET)
