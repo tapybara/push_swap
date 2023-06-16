@@ -10,17 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	do_sa(dclist *stack_a)
-{
+#include "push_swap.h"
 
+void	do_sa(dclist *stack)
+{
+	dclist	*node;
+
+	node = stack->next;
+	swap_int(&(node->id), &(node->next->id));
+	swap_int(&(node->data), &(node->next->data));
+	ft_printf("sa\n");
 }
 
-void	do_sb(dclist *stack_b)
+void	do_sb(dclist *stack)
 {
+	dclist	*node;
 
+	node = stack->next;
+	swap_int(&(node->id), &(node->next->id));
+	swap_int(&(node->data), &(node->next->data));
+	ft_printf("sb\n");
 }
 
-void	do_ss(dclist *stack_b)
+void	do_ss(dclist *stack_a, dclist *stack_b)
 {
-
+	do_sa(stack_a);
+	do_sb(stack_b);
+	ft_printf("ss\n");
 }

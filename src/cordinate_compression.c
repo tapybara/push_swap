@@ -47,13 +47,4 @@ void	cordinate_compression(const int ac, dclist *head)
 	}
 	quick_sort(sorted_array, 0, size - 1);
 	set_id_into_stack(head, sorted_array, size);
-
-	node = head->next;
-	i = 0;
-	while(node != head)
-	{
-		ft_printf("%d(%d), ",node->id, node->data);
-		node = node->next;
-	}
-	ft_printf("\n");
 }

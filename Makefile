@@ -29,7 +29,12 @@ FILE_NAME	= \
 			dclist_utils_add.c\
 			dclist_utils_del.c\
 			cordinate_compression.c\
-			push_swap_utils.c
+			push_swap_utils.c\
+			comand_swap.c\
+			comand_rotate.c\
+			comand_rev_rotate.c\
+			sort_case3.c\
+			debug_print.c
 
 OBJS = $(SRCS:%.c=%.o)
 

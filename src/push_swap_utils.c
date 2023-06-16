@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static void swap_int(int *a, int *b)
+#include "push_swap.h"
+
+void swap_int(int *a, int *b)
 {
 	const int	tmp = *a;
 

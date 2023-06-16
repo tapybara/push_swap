@@ -32,4 +32,15 @@ void	free_stack(dclist *head);
 void	cordinate_compression(int ac, dclist *head);
 void	swap_int(int *a, int *b);
 void    quick_sort(int *arr, int low, int high);
+void	is_sorted(dclist *head);
+
+void	sort_case3(dclist *head);
+
+void	do_sa(dclist *stack);
+void	do_sb(dclist *stack);
+void	do_ss(dclist *stack_a, dclist *stack_b);
+void	do_ra(dclist *head);
+void	do_rra(dclist *head);
+
+void	debug_print(dclist *head);
 #endif
