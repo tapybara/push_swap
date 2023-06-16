@@ -86,29 +86,25 @@ int main(int ac, char **av)
 	dclist	*stack_a;
 	dclist	*stack_b;
 
-	// 引数不足の判定
 	if (ac < 3)
 		exit(EX_USAGE);
-	// 無効な入力判定
 	is_invalid_input(ac, av);
-	// 入力データを双方向循環リストに格納
 	stack_a = dclist_new();
 	stack_b = dclist_new();
 	input_to_stack(stack_a, ac, av);
-	// ソート済み判定
 	is_sorted(stack_a);
-	// 座標圧縮
 	cordinate_compression(ac, stack_a);
+	debug_print(stack_a);
 	// ソート処理
 	if (ac == 3)
-		ft_printf("SIZE = 2\n");
-		// do_sa(stack_a);
+		do_sa(stack_a);
 	else if (ac == 4)
-		ft_printf("SIZE = 3\n");
+		sort_case3(stack_a);
 	else if (ac <= 7)
 		ft_printf("SIZE = 4-6\n");
 	else
 		ft_printf("SIZE = OVER SIX\n");
+	debug_print(stack_a);
 	// スタックメモリ解放
 	free_stack(stack_a);
 	free_stack(stack_b);
