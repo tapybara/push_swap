@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	is_sorted(dclist *head)
+bool	is_sorted(dclist *head)
 {
 	dclist *node;
 
@@ -20,12 +20,10 @@ void	is_sorted(dclist *head)
 	while (node->next != head)
 	{
 		if (node->data > node->next->data)
-			return ;
+			return (false);
 		node = node->next;
 	}
-	ft_printf("ERROR: ALREADY SORTED\n");
-	free_stack(head);
-	exit (EXIT_FAILURE);
+	return	(true);
 }
 
 dclist	*input_to_stack(dclist *head, int ac, char **av)
@@ -44,6 +42,12 @@ dclist	*input_to_stack(dclist *head, int ac, char **av)
 			exit (EXIT_FAILURE);
 		}
 		dclist_add_back(head, (int)nbr);
+	}
+	if (is_sorted(head))
+	{
+		ft_printf("ERROR: ALREADY SORTED\n");
+		free_stack(head);
+		exit (EXIT_FAILURE);
 	}
 	return (head);
 }
@@ -90,11 +94,10 @@ int main(int ac, char **av)
 		exit(EX_USAGE);
 	is_invalid_input(ac, av);
 	stack_a = dclist_new();
-	stack_b = dclist_new();
 	stack_a->symbol = 'a';
-	stack_b->symbol = 'b';
 	input_to_stack(stack_a, ac, av);
-	is_sorted(stack_a);
+	stack_b = dclist_new();
+	stack_b->symbol = 'b';
 	cordinate_compression(ac, stack_a);
 	debug_print(stack_a);	//For Debug
 	if (ac == 3)
@@ -104,7 +107,8 @@ int main(int ac, char **av)
 	else if (ac <= 7)
 		sort_case_6_or_less(stack_a, stack_b, ac - 1);
 	else
-		ft_printf("SIZE = OVER SIX\n");
+		// sort_case_over_6(stack_a, stack_b);
+		ft_printf("OVER SIX\n");
 	debug_print(stack_a);	//For Debug
 	free_stack(stack_a);
 	free_stack(stack_b);
