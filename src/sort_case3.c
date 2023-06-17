@@ -6,6 +6,8 @@ void	sort_case3(dclist *head)
 	int		min_id;
 	int		max_id;
 
+	if (is_sorted(head))
+		return ;
 	min_id = get_min_id(head);
 	max_id = get_max_id(head);
 	center = head->next->next;
@@ -39,7 +41,7 @@ void	sort_case_6_or_less(dclist *stack_a, dclist *stack_b, int size)
 	int		min_pos;
 
 	serch_id = 0;
-	while (size-- > 3)
+	while (size-- > 3 && !is_sorted(stack_a))
 	{
 		min_pos = get_min_pos_and_rotate_direction(stack_a, serch_id++);
 		if (min_pos >= 0)
@@ -52,9 +54,11 @@ void	sort_case_6_or_less(dclist *stack_a, dclist *stack_b, int size)
 			while (min_pos++)
 				do_reverse_rotate(stack_a);			
 		}
-		do_push(stack_a, stack_b);
+		if (!is_sorted(stack_a))
+			do_push(stack_a, stack_b);
 	}
-	sort_case3(stack_a);
+	if (!is_sorted(stack_a))
+		sort_case3(stack_a);
 	while (stack_b->next != stack_b)
 		do_push(stack_b, stack_a);
 }
