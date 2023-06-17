@@ -7,7 +7,7 @@ void	debug_print(dclist *head)
 	node = head->next;
 	while(node != head)
 	{
-		ft_printf("ID=%d(Data=%d), ",node->id, node->data);
+		ft_printf("Data=%d(ID=%d), ",node->data, node->id);
 		node = node->next;
 	}
 	ft_printf("\n");

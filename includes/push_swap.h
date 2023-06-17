@@ -20,27 +20,33 @@
 # include "libft.h"
 
 typedef struct  dclist{
-    int     data;
-    int     id;
-    struct dclist    *prev;
-    struct dclist    *next;
+	int     data;
+	int     id;
+	char    symbol;
+	struct dclist    *prev;
+	struct dclist    *next;
 } dclist;
 
 dclist   *dclist_new(void);
 void    dclist_add_back(dclist *head, int val);
+void    dclist_add_front(dclist *head, int val);
 void	free_stack(dclist *head);
+void	free_node(dclist *head);
 void	cordinate_compression(int ac, dclist *head);
+int     get_max_id(dclist *head);
+int     get_min_id(dclist *head);
 void	swap_int(int *a, int *b);
 void    quick_sort(int *arr, int low, int high);
 void	is_sorted(dclist *head);
 
 void	sort_case3(dclist *head);
+void	sort_case_6_or_less(dclist *stack_a, dclist *stack_b, int size);
+int	    get_min_pos_and_rotate_direction(dclist *head, int serch_id);
 
-void	do_sa(dclist *stack);
-void	do_sb(dclist *stack);
-void	do_ss(dclist *stack_a, dclist *stack_b);
-void	do_ra(dclist *head);
-void	do_rra(dclist *head);
+void	do_swap(dclist *stack);
+void	do_rotate(dclist *head);
+void	do_reverse_rotate(dclist *head);
+void	do_push(dclist *before, dclist *after);
 
 void	debug_print(dclist *head);
 #endif

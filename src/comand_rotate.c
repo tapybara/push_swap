@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	do_ra(dclist *head)
+void	do_rotate(dclist *head)
 {
 	head->prev->next = head->next;
 	head->next->next->prev = head;
@@ -8,5 +8,8 @@ void	do_ra(dclist *head)
 	head->prev = head->next;
 	head->next = head->next->next;
 	head->prev->next = head;
-	ft_printf("ra\n");
+	if (head->symbol == 'a')
+		ft_printf("ra\n");
+	if (head->symbol == 'b')
+		ft_printf("rb\n");
 }

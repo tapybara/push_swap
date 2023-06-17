@@ -27,3 +27,15 @@ void	free_stack(dclist *head)
 	free(node);
 	head = NULL;
 }
+
+void	free_node(dclist *head)
+{
+	dclist	*node;
+
+	node = head->next;
+	if (node == head)
+		return ;
+	node->next->prev = head;
+	head->next = node->next;
+	free(node);
+}

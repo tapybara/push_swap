@@ -33,6 +33,7 @@ FILE_NAME	= \
 			comand_swap.c\
 			comand_rotate.c\
 			comand_rev_rotate.c\
+			comand_push.c\
 			sort_case3.c\
 			debug_print.c
 

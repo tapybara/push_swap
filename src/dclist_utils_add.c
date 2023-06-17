@@ -37,12 +37,6 @@ void    dclist_add_back(dclist *head, int val)
 		new->next = head;
 		head->next = new;
 		head->prev = new;
-		// ft_printf("head : %p |", head);
-		// ft_printf("new : %p |", new);
-		// ft_printf("new->prev : %p |", new->prev);
-		// ft_printf("new->next : %p |", new->next);
-		// ft_printf("head->prev: %p |", head->prev);
-		// ft_printf("head->next: %p\n", head->next);
 	}
 	else
 	{
@@ -51,11 +45,18 @@ void    dclist_add_back(dclist *head, int val)
 		head->prev = new;
 		new->prev = tail;
 		new->next = head;
-		// ft_printf("head : %p |", head);
-		// ft_printf("new : %p |", new);
-		// ft_printf("new->prev : %p |", new->prev);
-		// ft_printf("new->next : %p |", new->next);
-		// ft_printf("head->prev: %p |", head->prev);
-		// ft_printf("head->next: %p\n", head->next);
 	}
+}
+
+void    dclist_add_front(dclist *head, int val)
+{
+	dclist	*new;
+
+	new = dclist_new();
+	new->data = val;
+	
+	new->prev = head;
+	new->next = head->next;
+	head->next->prev = new;
+	head->next = new;
 }

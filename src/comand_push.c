@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comand_swap.c                                      :+:      :+:    :+:   */
+/*   comand_push.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: okuyamatakahito <okuyamatakahito@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 22:36:12 by okuyamataka       #+#    #+#             */
-/*   Updated: 2023/05/09 22:36:13 by okuyamataka      ###   ########.fr       */
+/*   Created: 2023/05/09 22:36:17 by okuyamataka       #+#    #+#             */
+/*   Updated: 2023/05/09 22:36:36 by okuyamataka      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_swap(dclist *head)
+void	do_push(dclist *before, dclist *after)
 {
-	dclist	*node;
-
-	node = head->next;
-	swap_int(&(node->id), &(node->next->id));
-	swap_int(&(node->data), &(node->next->data));
-	if (head->symbol == 'a')
-		ft_printf("sa\n");
-	if (head->symbol == 'b')
-		ft_printf("sb\n");
-}
-
-void	do_ss(dclist *stack_a, dclist *stack_b)
-{
-	do_swap(stack_a);
-	do_swap(stack_b);
-	ft_printf("ss\n");
+	dclist_add_front(after, before->next->data);
+	after->next->id = before->next->id;
+	free_node(before);
+	if (before->symbol == 'a')
+		ft_printf("pb\n");
+	if (before->symbol == 'b')
+		ft_printf("pa\n");
 }

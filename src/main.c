@@ -83,7 +83,7 @@ void	is_invalid_input(int ac, char **av)
 
 int main(int ac, char **av)
 {
-	dclist	*stack_a;
+	dclist	*stack_a; 
 	dclist	*stack_b;
 
 	if (ac < 3)
@@ -91,21 +91,21 @@ int main(int ac, char **av)
 	is_invalid_input(ac, av);
 	stack_a = dclist_new();
 	stack_b = dclist_new();
+	stack_a->symbol = 'a';
+	stack_b->symbol = 'b';
 	input_to_stack(stack_a, ac, av);
 	is_sorted(stack_a);
 	cordinate_compression(ac, stack_a);
-	debug_print(stack_a);
-	// ソート処理
+	debug_print(stack_a);	//For Debug
 	if (ac == 3)
-		do_sa(stack_a);
+		do_swap(stack_a);
 	else if (ac == 4)
 		sort_case3(stack_a);
 	else if (ac <= 7)
-		ft_printf("SIZE = 4-6\n");
+		sort_case_6_or_less(stack_a, stack_b, ac - 1);
 	else
 		ft_printf("SIZE = OVER SIX\n");
-	debug_print(stack_a);
-	// スタックメモリ解放
+	debug_print(stack_a);	//For Debug
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);
